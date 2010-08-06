@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>TrendTime - OxenteRails (:</title>
+    <style type="text/css" media="screen">
+      body {
+        background: #000;
+        font-family: Verdana;
+        font-size: 13px;
+        color: #000;
+        margin: 0 auto;
+        line-height: 1.4;
+      }
+      h2 {
+        color: #fff;
+        margin-top: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      a, a:visited {
+        color: #066999;
+      }
+      a:hover {
+        color: #066999;
+      }
+      .tweet {
+        background: #fff;
+        margin: 4px 0;
+        width: 400px;
+        padding: 8px;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+      }
+      .tweet img {
+        float: left;
+        margin: 0 8px 4px 0;
+      }
+      .tweet .text {
+        margin: 0;
+      }
+      .tweet .time a {
+        font-size: 80%;
+        color: #888;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+      .tweet .time a:hover {
+        text-decoration: underline;
+      }
+      #twitterSearchA .tweet {
+        min-height: 24px;
+      }
+      #twitterSearchA .tweet .text {
+        margin-left: 32px;
+      }
+      }
+      #twitterSearchB .tweet {
+        min-height: 24px;
+      }
+      #twitterSearchB .tweet .text {
+        margin-left: 32px;
+      }
+      .twitterTracker {
+        float:left;
+        padding: 0 25px 0 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="twitterTracker">
+      <h2>Procurando por <em><span id="searchTerm">#<%= params[:event]%></span> e <span id="searchTerm">#<%= params[:tracka]%></span></em></h2>
+      <div id="twitterSearchA" class="tweets"></div>
+    </div>
+    <div class="twitterTracker">
+      <h2>Procurando por <em><span id="searchTerm">#<%= params[:event]%></span> e <span id="searchTerm">#<%= params[:trackb]%></span></em></h2>
+      <div id="twitterSearchB" class="tweets"></div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" ></script>
+    <script src="/jquery.livetwitter.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $('#twitterSearchA').liveTwitter('<%= params[:event]%> <%= params[:tracka]%>', {limit: 10, rate: 5000});
+      $('#twitterSearchB').liveTwitter('<%= params[:event]%> <%= params[:trackb]%>', {limit: 10, rate: 5000});
+      $('#searchLinks a').each(function(){
+        var query = $(this).text();
+        $(this).click(function(){
+          $('#twitterSearchA').liveTwitter(query);
+          $('#twitterSearchB').liveTwitter(query);
+          $('#searchTerm').text(query);
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>
