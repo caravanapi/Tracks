@@ -12,21 +12,21 @@
         text-align:center;
       }
       h2 {
-        color: #fff;
-        margin-top: 40px;
-        font-family: Helvetica, Arial, sans-serif;
-        font-size: 24px;
-        font-weight: bold;
+        color:#fff;
+        margin-top:40px;
+        font-family:Helvetica, Arial, sans-serif;
+        font-size:24px;
+        font-weight:bold;
       }
       #page {
-        width:1000px;
+        width:900px;
         margin:0 auto;
         text-align:left;
       }
       #top {
         background:url("/images/top.jpg") center top no-repeat;
         height:175px;
-        padding:50px 140px 0;
+        padding:50px 70px 0;
       }
       #top h1 {
         margin:0 auto;
@@ -38,62 +38,57 @@
         font-size:2.3em;
         font-weight:bold;
         line-height:1em;
-        position:absolute;
-        top:60px;
+        position:relative;
+        top:-60px;
         text-shadow:0 2px 2px #999999;
-        width:35%;
+        width:38%;
       }
       .trackb {
-        float:right;
-        right:0;
+        margin-left:172px;
         text-align:right;
       }
       a, a:visited {
-        color: #066999;
+        color:#ffae30;
       }
       a:hover {
-        color: #066999;
+        color:#ff7e00;
       }
       .tweet {
-        background: #fff;
-        margin: 4px 0;
-        width: 400px;
-        padding: 8px;
-        -moz-border-radius: 8px;
-        -webkit-border-radius: 8px;
+        margin:4px 0;
+        width:400px;
+        padding:12px;
+        color:#fff;
+        border-bottom:1px solid #555;
+        overflow:hidden;
       }
       .tweet img {
-        float: left;
-        margin: 0 8px 4px 0;
+        float:left;
+        margin:0 8px 4px 0;
+        width:48px;
+        height:48px;
+        border:1px solid #888;
       }
       .tweet .text {
-        margin: 0;
+        margin:0;
+        padding-bottom:10px;
+        float:right;
+        width:330px;
       }
       .tweet .time a {
-        font-size: 80%;
-        color: #888;
-        white-space: nowrap;
-        text-decoration: none;
+        font-size:80%;
+        color:#888;
+        white-space:nowrap;
+        text-decoration:none;
       }
       .tweet .time a:hover {
-        text-decoration: underline;
-      }
-      #twitterSearchA .tweet {
-        min-height: 24px;
-      }
-      #twitterSearchA .tweet .text {
-        margin-left: 32px;
-      }
-      }
-      #twitterSearchB .tweet {
-        min-height: 24px;
-      }
-      #twitterSearchB .tweet .text {
-        margin-left: 32px;
+        text-decoration:underline;
       }
       .twitterTracker {
         float:left;
-        padding: 0 25px 0 25px;
+        margin-top:-45px;
+      }
+      .twitterTracker.A {
+        margin-right:48px;
       }
     </style>
   </head>
@@ -103,18 +98,18 @@
         <h1><img src="/images/oxenterails.png" alt="Oxente Rails 2010" /></h1>
         <p class="tracka"><%= params[:tracka] %></p><p class="trackb"><%= params[:trackb] %></p>
       </div>
-    <div class="twitterTracker">
+    <div class="twitterTracker A">
       <div id="twitterSearchA" class="tweets"></div>
     </div>
-    <div class="twitterTracker">
+    <div class="twitterTracker B">
       <div id="twitterSearchB" class="tweets"></div>
     </div>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" ></script>
     <script src="/jquery.livetwitter.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-      $('#twitterSearchA').liveTwitter('<%= params[:event]%> <%= params[:tracka]%>', {limit: 10, rate: 5000});
-      $('#twitterSearchB').liveTwitter('<%= params[:event]%> <%= params[:trackb]%>', {limit: 10, rate: 5000});
+      $('#twitterSearchA').liveTwitter('<%= params[:event]%> <%= params[:tracka]%>', {limit:10, rate:5000});
+      $('#twitterSearchB').liveTwitter('<%= params[:event]%> <%= params[:trackb]%>', {limit:10, rate:5000});
       $('#searchLinks a').each(function(){
         var query = $(this).text();
         $(this).click(function(){
