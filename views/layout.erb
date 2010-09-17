@@ -120,13 +120,5 @@
   <script src="/jquery.livetwitter.min.js" type="text/javascript"></script>
   <script type="text/javascript">
     $('#twitterSearchA').liveTwitter('infopi OR infopi2010', {limit:10, rate:5000});
-    $('#searchLinks a').each(function(){
-      var query = $(this).text();
-      $(this).click(function(){
-        $('#twitterSearchA').liveTwitter(query);
-        $('#searchTerm').text(query);
-        return false;
-      });
-    });
   </script>
 </html>
